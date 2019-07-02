@@ -1,3 +1,12 @@
-<p>
-  gc-chat-view works!
-</p>
+<p-virtualScroller [value]="messages" scrollHeight="500px" [itemSize]="75">
+    <ng-template let-message pTemplate="item" let-i="index">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-8">
+                <div class="ui-g">
+                    <div class="ui-g-10 ui-sm-6">{{message.user}}</div>
+                    <div class="ui-g-10 ui-sm-6">{{message.message}}</div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-virtualScroller>

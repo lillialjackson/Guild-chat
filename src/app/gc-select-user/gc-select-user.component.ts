@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {SelectItem} from 'primeng/api';
 
 @Component({
@@ -9,8 +10,8 @@ import {SelectItem} from 'primeng/api';
 export class GcSelectUserComponent implements OnInit {
   userList: SelectItem[];
   selectedUser: string;
-
-  constructor() {
+  // user: string;
+  constructor(private router: Router) {
     this.userList = [
       {label: 'Select User', value: null},
       {label: 'Kimmy', value: {id: 1, name: 'Kimmy'}},
@@ -18,4 +19,12 @@ export class GcSelectUserComponent implements OnInit {
     ];
   }
   ngOnInit() {}
+  enterChat() {
+    console.log('chat entered!', this.selectedUser);
+    if (this.selectedUser === null || this.selectedUser === undefined) {
+      alert('Please select a user');
+    } else {
+      this.router.navigateByUrl('/chat');
+    }
+  }
 }

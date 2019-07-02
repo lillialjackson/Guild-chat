@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -29,7 +29,7 @@ import { GcChatViewComponent } from './gc-chat-view/gc-chat-view.component';
     ButtonModule,
     InputTextareaModule,
     DropdownModule,
-    ScrollPanelModule
+    VirtualScrollerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
-<p>
-  gc-chat-message works!
-</p>
+<form (submit)= "onSubmit()">
+  <textarea rows="2" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="message" name= "message" ></textarea>
+  <button pButton type="submit" label="Send" ></button>
+</form>
+

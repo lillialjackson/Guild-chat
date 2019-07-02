@@ -1,5 +1,7 @@
 <div>
   <h2>Please select a user: </h2>
-  <p-dropdown [options]="userList" [(ngModel)]="selectedUser" ></p-dropdown>
-  <button pButton type="button" label="Enter Chat" ></button>
+  <form (submit)="enterChat()">
+  <p-dropdown [options]="userList" [(ngModel)]="selectedUser" name="user"></p-dropdown>
+  <button pButton type="submit" label="Enter Chat" ></button>
+</form>
 </div>
