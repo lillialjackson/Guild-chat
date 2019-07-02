@@ -1,3 +1,5 @@
-<p>
-  gc-select-user works!
-</p>
+<div>
+  <h2>Please select a user: </h2>
+  <p-dropdown [options]="userList" [(ngModel)]="selectedUser" ></p-dropdown>
+  <button pButton type="button" label="Enter Chat" ></button>
+</div>
