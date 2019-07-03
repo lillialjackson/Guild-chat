@@ -6,4 +6,7 @@ import { Injectable } from '@angular/core';
 export class GcMessageService {
 
   constructor() { }
+  // add message to db
+  // get messages from db
+  
 }
