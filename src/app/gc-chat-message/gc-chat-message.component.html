@@ -1,4 +1,5 @@
 <form (submit)= "onSubmit()">
+  <p-dropdown [options]="userList" [(ngModel)]="selectedUser" name="user"></p-dropdown>
   <textarea rows="2" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="message" name= "message" ></textarea>
   <button pButton type="submit" label="Send" ></button>
 </form>

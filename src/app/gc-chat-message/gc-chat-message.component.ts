@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { GcMessageService } from '../gc-message.service';
-import { GcUsersService } from '../gc-users.service';
+import {SelectItem} from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { Message } from '../message';
 
 @Component({
   selector: 'app-gc-chat-message',
@@ -13,31 +12,33 @@ export class GcChatMessageComponent implements OnInit, OnDestroy {
   userSubscription: Subscription;
   messageData = {};
   message: string;
-  user: any;
-  constructor(private usersService: GcUsersService,
-              private messageService: GcMessageService) { 
-                
+  userList: SelectItem[];
+  selectedUser: string;
+
+  constructor(private messageService: GcMessageService) { 
+                this.userList = [
+                {label: 'Select User', value: null},
+                {label: 'Kimmy', value: 'Kimmy'},
+                {label: 'Lillian', value: 'Lillian'},
+              ]; 
               }
 
   ngOnInit() {
-    this.userSubscription = this.usersService.getSelectedUser().subscribe(user => {
-      this.user = user;
-      console.log('user recieved in chat', this.user);
-    }
-    );
-    console.log(this.user);
   }
 
   onSubmit() {
     console.log('message sent!', this.message);
-    this.messageData['user'] = this.user;
+    this.messageData['user'] = this.selectedUser;
     this.messageData['dateTime'] = new Date();
     this.messageData['message'] = this.message;
     console.log('messageData', this.messageData);
-    this.messageService.sendMessage(this.message);
-    this.message = '';
+    if (this.messageData['user']) {
+      this.messageService.sendMessage(this.messageData);
+      this.message = '';
+    } else {
+      alert('Please select a user');
+    }
   }
   ngOnDestroy() {
-    // this.userSubscription.unsubscribe();
   }
 }
