@@ -3,14 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { environment } from '../environments/environment';
-// import * as firebase from 'firebase/app';
-// import 'firebase/database';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { GcChatComponent } from './gc-chat/gc-chat.component';
@@ -30,10 +27,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireModule,
-    // firebase.initializeApp(environment.firebase),
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     FormsModule,
     ButtonModule,
     InputTextareaModule,

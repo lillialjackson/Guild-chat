@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { GcMessageService } from '../gc-message.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -8,17 +9,14 @@ import { GcMessageService } from '../gc-message.service';
   templateUrl: './gc-chat-view.component.html',
   styleUrls: ['./gc-chat-view.component.sass']
 })
-export class GcChatViewComponent implements OnInit, OnChanges {
-  viewMessages: AngularFireList<any>;
-  constructor(private messageService: GcMessageService) { }
+export class GcChatViewComponent implements OnInit {
+  viewMessages: Observable<any>;
+  constructor(private messageService: GcMessageService) { 
+    this.viewMessages = this.messageService.getMessages().valueChanges();
 
-  ngOnInit() {
-    this.viewMessages = this.messageService.getMessages();
   }
 
-  ngOnChanges() {
-    this.viewMessages = this.messageService.getMessages();
-    console.log('viewmsg', this.viewMessages);
+  ngOnInit() {
   }
 
 }

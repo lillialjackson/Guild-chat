@@ -11,19 +11,14 @@ import { AngularFireDatabase } from '@angular/fire/database';
   styleUrls: ['./gc-chat.component.sass']
 })
 export class GcChatComponent implements OnInit, OnDestroy {
-  messageSubscription: Subscription;
   messages = [];
   fbMessages: Observable<any>;
   addMessages: any;
   constructor(private messageService: GcMessageService,
               public firebaseDb: AngularFireDatabase ) { 
-    this.messageSubscription = this.messageService.getMessage().subscribe((messageData) => {
-      this.messages.push(messageData);
-      console.log('message recieved in chat', this.messages);})
-  
-  this.fbMessages = firebaseDb.list('messages').valueChanges();
-  this.addMessages = firebaseDb.list('messages');
-  this.addMessages.push(this.messages);
+  // this.fbMessages = firebaseDb.list('messages').valueChanges();
+  // this.addMessages = firebaseDb.list('messages');
+  // this.addMessages.push(this.messages);
   }
 
   ngOnInit() {
@@ -31,7 +26,7 @@ export class GcChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.messages = [];
-    this.messageSubscription.unsubscribe();
+    // this.messageSubscription.unsubscribe();
   }
 
 }
