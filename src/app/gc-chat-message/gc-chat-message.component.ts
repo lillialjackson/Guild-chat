@@ -13,13 +13,13 @@ export class GcChatMessageComponent implements OnInit {
   userList: SelectItem[];
   selectedUser: string;
 
-  constructor(private messageService: GcMessageService) { 
+  constructor(private messageService: GcMessageService) {
                 this.userList = [
                 {label: 'Select User', value: null},
                 {label: 'Kimmy', value: 'Kimmy'},
                 {label: 'Lillian', value: 'Lillian'},
-              ]; 
-              }
+              ];
+            }
 
   ngOnInit() {
   }
@@ -30,9 +30,10 @@ export class GcChatMessageComponent implements OnInit {
     this.messageData['message'] = this.message;
     if (this.messageData['user']) {
       this.messageService.sendMessage(this.messageData);
+      console.log(this.messageData);
       this.message = '';
     } else {
       alert('Please select a user');
     }
-  } 
+  }
 }
